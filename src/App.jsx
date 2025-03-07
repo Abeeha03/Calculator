@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route, Link } from "react-router-dom";
+import Calculator1 from "./pages/Calculator1";
+import Calculator2 from "./pages/Calculator2";
+import Calculator3 from "./pages/Calculator3";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      {/* Header */}
+      <header className="header">
+        <img src="/image.png" className="logo"/>
+        <span className="title">Kitty Kalculator</span>
+        <nav>
+          <Link to="/" className="tab">1</Link>
+          <Link to="/calc2" className="tab">2</Link>
+          <Link to="/calc3" className="tab">3</Link>
+        </nav>
+      </header>
+
+      {/* Routes */}
+      <Routes>
+        <Route path="/" element={<Calculator1 />} />
+        <Route path="/calc2" element={<Calculator2 />} />
+        <Route path="/calc3" element={<Calculator3 />} />
+      </Routes>
+    </div>
+  );
 }
 
-export default App
+export default App;
